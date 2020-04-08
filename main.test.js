@@ -173,3 +173,100 @@ describe('Ray.shift', () => {
     expect(removed2).toBe(51);
   })
 })
+describe('Ray.shift', () => {
+  it(`is a method`, () => {
+    expect(typeof ray.shift).toBe('function')
+  })
+  it(`decrements the length by 1`, () => {
+    ray[0] = 5;
+    ray[1] = 'hello';
+    ray[2] = false;
+    ray.length = 3;
+    ray.shift();
+    expect(ray.length).toBe(2);
+    ray.shift();
+    expect(ray.length).toBe(1);
+    ray.shift();
+    expect(ray.length).toBe(0);
+  })
+  it(`removes the value and key at the previous last index`, () => {
+    ray[0] = 7;
+    ray[1] = 11;
+    ray.length = 2;
+    ray.shift();
+    expect(ray[1]).toBe(undefined);
+  })
+  it(`pushes all elements but the first to a key one lower`, () => {
+    ray[0] = 7;
+    ray[1] = 11;
+    ray[2] = 12;
+    ray.length = 3;
+    ray.shift();
+    expect(ray[0]).toBe(11);
+    expect(ray[1]).toBe(12);
+    ray.shift();
+    expect(ray[0]).toBe(12);
+  })
+  it(`returns the removed element`, () => {
+    ray[0] = 15;
+    ray[1] = 51;
+    ray.length = 2;
+    const removed1 = ray.shift();
+    expect(removed1).toBe(15)
+    const removed2 = ray.shift();
+    expect(removed2).toBe(51);
+  })
+})
+describe('Ray.include', () => {
+  it('is a method', () => {
+  expect(typeof ray.include).toBe('function')
+  })
+  it('tells if the value is included', () => {
+  ray[0] = 5;
+  ray[1] = 'hello';
+  ray[2] = false;
+  ray[3] = 2;
+  ray[4] = 3;
+  ray.length = 5;
+  let value=ray.include('hello');
+  expect(value).toBe(true);
+  let value1=ray.include('notthere');
+  expect(value1).toBe(false);
+  })
+  })
+  describe('Ray.indexOf', () => {
+  it('is a method', () => {
+  expect(typeof ray.indexOf).toBe('function')
+  })
+  it('tells if the value is included', () => {
+  ray[0] = 5;
+  ray[1] = 'hello';
+  ray[2] = false;
+  ray[3] = 2;
+  ray[4] = 3;
+  ray.length = 5;
+  let value=ray.indexOf('hello');
+  expect(value).toBe(1);
+  let value1=ray.indexOf('notthere');
+  expect(value1).toBe(-1);
+  })
+  })
+  describe('Ray.reverse', () => {
+  it('is a method', () => {
+  expect(typeof ray.reverse).toBe('function')
+  })
+  it('reverse the order', () => {
+  ray[0] = 5;
+  ray[1] = 'hello';
+  ray[2] = false;
+  ray[3] = 2;
+  ray[4] = 3;
+  ray.length = 5;
+  ray.reverse()
+  expect(ray[0]).toBe(3)
+  expect(ray[1]).toBe(2)
+  expect(ray[2]).toBe(false)
+  expect(ray[3]).toBe('hello')
+  expect(ray[4]).toBe(5)
+  })
+  })

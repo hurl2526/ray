@@ -24,11 +24,18 @@ const Ray = function() {
       for (let i = 0;i < this.length; i++){
         this[i] = this[i+1]
       }
-
       delete this[this.length-1]
       this.length--
       return remove
     },
+    include: function(value){
+      for (let i = this.length-1; i >=0; i -- ){
+        if (this[i] === value){
+          return true
+        }
+      }
+      return false
+    }
   }
 }
 
